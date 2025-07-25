@@ -13,7 +13,7 @@ export default function NavBar({ user, onNavigate, onLogout }) {
             className="text-2xl font-bold text-white cursor-pointer"
             onClick={() => onNavigate(user ? 'dashboard' : 'landing')}
           >
-            CodeLab
+            CodeMate
           </div>
           <div className="flex items-center space-x-4">
             {user ? (

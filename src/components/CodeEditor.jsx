@@ -1,7 +1,10 @@
+'use client';
 
+import dynamic from 'next/dynamic';
+import { Play } from 'lucide-react';
 
-import { Play, Code, Users, BarChart3, Settings, LogOut, User, Trophy, Clock, FileText } from 'lucide-react';
-
+// Dynamically import Monaco Editor (required in Next.js)
+const MonacoEditor = dynamic(() => import('@monaco-editor/react'), { ssr: false });
 
 const CodeEditor = ({ code, setCode, language, setLanguage, output, onRun, isRunning, onBackToDashboard }) => {
   const languages = [
@@ -23,7 +26,7 @@ const CodeEditor = ({ code, setCode, language, setLanguage, output, onRun, isRun
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-[calc(100vh-200px)]">
           {/* Code Editor */}
-          <div className="bg-white/10 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+          <div className="bg-white/10 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden flex flex-col">
             <div className="flex justify-between items-center p-4 border-b border-white/20">
               <select
                 value={language}
@@ -45,13 +48,23 @@ const CodeEditor = ({ code, setCode, language, setLanguage, output, onRun, isRun
                 {isRunning ? 'Running...' : 'Run Code'}
               </button>
             </div>
-            <textarea
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
-              className="w-full h-full p-4 bg-transparent text-white font-mono resize-none focus:outline-none"
-              placeholder="Write your code here..."
-              style={{ minHeight: '400px' }}
-            />
+
+            <div className="flex-1">
+              <MonacoEditor
+                height="100%"
+                defaultLanguage={language}
+                language={language}
+                value={code}
+                onChange={(value) => setCode(value || '')}
+                theme="vs-dark"
+                options={{
+                  fontSize: 14,
+                  minimap: { enabled: false },
+                  scrollBeyondLastLine: false,
+                  wordWrap: 'on',
+                }}
+              />
+            </div>
           </div>
 
           {/* Output */}
@@ -71,4 +84,4 @@ const CodeEditor = ({ code, setCode, language, setLanguage, output, onRun, isRun
   );
 };
 
-export default CodeEditor
+export default CodeEditor;
