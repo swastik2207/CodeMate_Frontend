@@ -1,0 +1,36 @@
+{
+  "data": [
+    {
+      "id": "1234",
+      "name": "Two Sum",
+      "description": "Given an array of integers, return indices of the two numbers such that they add up to a specific target.",
+      "constraints": [
+        "1<=a<=10^5",
+        "1<=b<=10^5"
+      ],
+      "sampleInputs": ["nums = [2, 7, 11, 15], target = 9"],
+      "sampleOutputs": ["[0, 1]"]
+    },
+    {
+      "id": "5678",
+      "name": "Palindrome Number",
+      "description": "Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.",
+      "constraints": [
+        "-2^31 <= x <= 2^31 - 1"
+      ],
+      "sampleInputs": ["x = 121", "x = -121", "x = 10"],
+      "sampleOutputs": ["true", "false", "false"]
+    },
+    {
+      "id": "91011",
+      "name": "Valid Parentheses",
+      "description": "Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.",
+      "constraints": [
+        "1 <= s.length <= 10^4"
+      ],
+      "sampleInputs": ["s = '()'", "s = '()[]{}'", "s = '(]'"],
+      "sampleOutputs": ["true", "true", "false"]
+    }
+  ],
+  "totalItems": 3
+}
